@@ -14,7 +14,7 @@ var bodyParser            = require("body-parser"),
 
 // APP CONFIG
 //mongoose.connect("mongodb://localhost/restful_blog_app");
-mongoose.connect("mongodb+srv://RafaAdm:<209215*rafa>@cluster0-qddif.mongodb.net/restful_blog_app?retryWrites=true");
+mongoose.connect("mongodb+srv://RafaAdm:<209215raf>@cluster0-qddif.mongodb.net/restful_blog_app?retryWrites=true");
 app.set("view engine", "ejs");
 app.use(express.static(__dirname + "/public"));
 app.use(bodyParser.urlencoded({extended: true}));
