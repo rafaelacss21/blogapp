@@ -1,0 +1,42 @@
+<html>
+    <head>
+        <title>Blog App</title>
+        <link  rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.3/semantic.min.css">
+        <link href="https://fonts.googleapis.com/css?family=Cabin" rel="stylesheet">
+        <link  rel="stylesheet" type="text/css" href="/stylesheets/app.css">
+    </head>
+    <body>
+        <div class="ui inverted segment">
+            <div class="ui fixed inverted menu">
+                <a href="/" class="item"><i class="blogger icon"></i>My Blog</a>
+                <div class="right menu">
+                    <% if(!currentUser){ %>
+                        <a href="/login" class="item">Login<i class="user icon"></i></a>
+                        <a href="/register" class="item">Sign Up<i class="user plus icon"></i></a>
+                    <% } else { %>
+                    <div class="ui simple dropdown item">
+                        Welcome back, <%= currentUser.username %><i class="dropdown icon"></i>
+                        <div class="menu">
+                        <a href="/account" class="item">My account</a>
+                        <a href="/blogs/new" class="item">New Post</a>
+                        <a href="/logout" class="item">Logout</a>
+                        </div>
+                        </div>
+                    <% } %>
+                </div>
+            </div>
+            
+        </div>
+        
+        <div class="ui center aligned">
+            <% if(error && error.length > 0){%>
+            <div class="ui red message" role="alert">
+                <%= error %>
+            </div>
+            <% } %>
+            <% if(success && success.length > 0){%>
+            <div class="ui green message" role="alert">
+                <%= success %>
+            </div>
+            <% } %>
+        </div>

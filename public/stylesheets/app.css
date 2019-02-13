@@ -1,0 +1,88 @@
+body {
+    font-family: 'Cabin', sans-serif;
+    background: #233e52;
+}
+
+i.blogger.icon {
+    font-size: 2em;
+}
+
+i.user.icon {
+    padding-left: 3px;
+}
+
+
+.ui.top.attached.segment {
+    box-shadow: 0 0 15px 5px rgba(0,0,0,0.2);
+    margin-top: 20px;
+    max-width: 900px!important;
+}
+
+.ui.container.segment{
+    max-width: 900px!important;
+}
+
+#delete {
+    display: inline;
+}
+
+footer {
+    position: absolute; 
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin-top: 30px;
+    color: #7792a7;
+}
+
+p {
+    text-align: justify;
+}
+
+.content {
+    margin: 10px 0;
+}
+
+.date {
+	text-transform: uppercase;
+	letter-spacing: 0.2rem;
+}
+
+.ui.header {
+    color: #5889ad;
+}
+
+.ui.inverted.segment {
+    margin-bottom: 40px;
+}
+
+.ui.right.labeled.inverted.blue.icon.button {
+    float: right;
+    margin-top: -60px;
+}
+
+.buttons {
+    margin-top: 10px;
+    float: right;
+}
+
+.ui.large.header {
+    margin-bottom: 25px;
+    margin-top: 3px;
+}
+
+.ui.centered.rounded.image {
+    width: 100%;
+}
+
+.noMarginP {
+    margin-bottom: 5px;
+}
+
+.ui.tiny.header {
+    float: right;
+    margin-top: 4px;
+}
+
+.ui.green.message {
+    margin: 10px;   
+}

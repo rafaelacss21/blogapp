@@ -1,0 +1,50 @@
+<% include ../partials/header %>
+<div class="ui main text container segment">
+    <div class="ui huge header"><%= blog.title %></div>
+    <div class="ui top attached ">
+        <div class="item">
+            <img class="ui centered rounded image" src="<%= blog.image %>" >
+            <div class="content">
+                Created by <span class="ui small header"><%= blog.author.username %></span>
+                <span>on <%= blog.created.toDateString() %></span>
+            </div>
+            <div class="description">
+                <p><%- blog.content %></p>
+            </div>
+            
+            <% if(currentUser && blog.author.id.equals(currentUser._id)){ %>
+                <div class="buttons">
+                    <a class="ui right labeled inverted brown icon button" href="/blogs/<%= blog._id %>/edit">Edit<i class="right edit icon"></i></a>
+                    <form id="delete" action="/blogs/<%= blog._id %>?_method=DELETE" method="POST">
+                        <button class="ui right labeled inverted red icon button">Delete<i class="right trash alternate icon"></i></button>
+                    </form>
+                </div>
+                <br><br>
+            <% } %>
+            
+        </div>
+    </div>
+</div>
+
+<div class="ui container segment">
+    <div class="ui large header">Comments</div>
+    <a class="ui right labeled inverted blue icon button" href="/blogs/<%= blog._id %>/comments/new">Comment<i class="right comment alternate outline icon"></i></a>
+        <% blog.comments.forEach(function(comment){ %>
+            <p class="noMarginP">
+                <span class="ui small header"><%= comment.author.username %></span> said: 
+                <span class="ui tiny header"><%= comment.created.toDateString() %></span>
+            </p>
+            <div>
+                <%= comment.text %>
+                <% if(currentUser && comment.author.id.equals(currentUser._id)){ %>
+                    <a class="mini ui right labeled inverted brown icon button" href="/blogs/<%= blog._id %>/comments/<%= comment._id %>/edit">Edit<i class="right edit icon"></i></a>
+                    <form id="delete" action="/blogs/<%= blog._id %>/comments/<%= comment._id %>?_method=DELETE" method="POST">
+                        <button class="mini ui right labeled inverted red icon button">Delete<i class="right trash alternate icon"></i></button>
+                    </form>
+                <% } %>
+            </div>
+            <div class="ui inverted divider"></div>
+        <% }) %>
+</div>
+<% include ../partials/footer %>
+
