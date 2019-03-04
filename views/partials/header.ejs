@@ -17,7 +17,7 @@
                     <div class="ui simple dropdown item">
                         Welcome back, <%= currentUser.username %><i class="dropdown icon"></i>
                         <div class="menu">
-                        <a href="/account" class="item">My account</a>
+                        <a href="/users/<%= currentUser.id %>" class="item">My profile</a>
                         <a href="/blogs/new" class="item">New Post</a>
                         <a href="/logout" class="item">Logout</a>
                         </div>

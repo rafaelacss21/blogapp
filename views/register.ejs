@@ -6,17 +6,31 @@
                 <form class="ui form" action="/register" method="post">
                     <div class="field">
                         <label>Username</label>
-                        <div class="ui left icon input">
-                            <input type="text" name="username" placeholder="Username" required>
-                            <i class="user icon"></i>
-                        </div>
+                        <input type="text" name="username" required>
                     </div>
                     <div class="field">
                         <label>Password</label>
-                        <div class="ui left icon input">
-                            <input type="password" name="password" placeholder="Password" required>
-                            <i class="lock icon"></i>
-                        </div>
+                        <input type="password" name="password" required>
+                    </div>
+                    <div class="field">
+                        <label>First Name</label>
+                        <input type="text" name="firstName" required>
+                    </div>
+                    <div class="field">
+                        <label>Last Name</label>
+                        <input type="text" name="lastName" required>
+                    </div>
+                    <div class="field">
+                        <label>E-mail</label>
+                        <input type="email" name="email" required>
+                    </div>
+                    <div class="field">
+                        <label>Avatar</label>
+                        <input type="text" name="avatar">
+                    </div>
+                    <div class="field">
+                        <label>Admin Code</label>
+                        <input type="text" name="adminCode">
                     </div>
                         <button class="ui right labeled inverted primary icon button">Sign Up<i class="right user plus alternate icon"></i></button>
                     </form>

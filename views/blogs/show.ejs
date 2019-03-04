@@ -5,8 +5,8 @@
         <div class="item">
             <img class="ui centered rounded image" src="<%= blog.image %>" >
             <div class="content">
-                Created by <span class="ui small header"><%= blog.author.username %></span>
-                <span>on <%= blog.created.toDateString() %></span>
+                Created by <a href="/users/<%= blog.author.id %>"><%= blog.author.username %></a>
+                on <%= blog.created.toDateString() %>
             </div>
             <div class="description">
                 <p><%- blog.content %></p>

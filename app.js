@@ -14,7 +14,7 @@ var bodyParser            = require("body-parser"),
 
 // APP CONFIG
 //mongoose.connect("mongodb://localhost/restful_blog_app");
-mongoose.connect("mongodb+srv://RafaAdm:209215raf@cluster0-qddif.mongodb.net/restful_blog_app?retryWrites=true");
+mongoose.connect("mongodb+srv://RafaAdm:209215raf@cluster0-qddif.mongodb.net/restful_blog_app");
 app.set("view engine", "ejs");
 app.use(express.static(__dirname + "/public"));
 app.use(bodyParser.urlencoded({extended: true}));
@@ -227,7 +227,16 @@ app.get("/register", function(req, res){
 
 // HANDLE USER SIGN UP
 app.post("/register", function(req, res){
-    var newUser = new User({username: req.body.username});
+    var newUser = new User({
+        username: req.body.username,
+        firstName: req.body.firstName,
+        lastName: req.body.lastName,
+        email: req.body.email,
+        avatar: req.body.avatar
+    });
+    if(req.body.adminCode === 'secretcode123') {
+      newUser.isAdmin = true;
+    }
     User.register(newUser, req.body.password, function(err, user){
         if(err){
             req.flash("error", err.message);
@@ -248,7 +257,9 @@ app.get("/login", function(req, res){
 // HANDLE USER LOGIN
 app.post("/login", passport.authenticate("local", {
         successRedirect: "/blogs",
-        failureRedirect: "/login"
+        failureRedirect: "/login",
+        failureFlash: 'Wrong username or password. Try again!',
+        successFlash: 'Welcome to BlogApp!'
     }), function(req, res){
 });
 
@@ -259,6 +270,22 @@ app.get("/logout", function(req, res){
    res.redirect("/blogs");
 });
 
+// USER PROFILE
+app.get("/users/:id", function(req, res){
+  User.findById(req.params.id, function(err, foundUser){
+    if(err){
+      req.flash("error", "Something went wrong.");
+      res.redirect("/");
+    }
+    Blog.find().where('author.id').equals(foundUser._id).exec(function(err, blogs) {
+      if(err) {
+        req.flash("error", "Something went wrong.");
+        res.redirect("/");
+      }
+    res.render("users/show", {user: foundUser, blogs: blogs});
+    });
+  });
+});
 
 //////////////////
 // MIDDLEWARES //

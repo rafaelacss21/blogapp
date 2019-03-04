@@ -3,11 +3,11 @@ body {
     background: #233e52;
 }
 
-i.blogger.icon {
+.blogger.icon {
     font-size: 2em;
 }
 
-i.user.icon {
+.user.icon {
     padding-left: 3px;
 }
 
@@ -85,4 +85,12 @@ p {
 
 .ui.green.message {
     margin: 10px;   
+}
+
+.ui.menu {
+    min-height: 4.857143em;
+}
+
+.ui.segment {
+    margin: 5rem 0;
 }
